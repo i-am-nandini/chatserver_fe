@@ -1,0 +1,48 @@
+
+<!-- 
+   <div class="chat-container">
+    <h3>Chat - {{ village }}</h3>
+    <div class="messages">
+      <div *ngFor="let msg of messages"
+           [class.left]="msg.user !== currentUser"
+           [class.right]="msg.user === currentUser">
+        <strong>{{ msg.user }}:</strong> {{ msg.message }}
+      </div>
+    </div>
+    <div class="chat-input">
+      <input [(ngModel)]="newMessage" placeholder="Type a message..." />
+      <button (click)="sendMessage()">Send</button>
+    </div>
+  </div>
+   -->
+
+
+   <div class="whatsapp-container">
+    <!-- Chat Header -->
+    <div class="chat-header">
+      <div class="chat-title">
+        <img class="profile-pic" src="assets/profile-placeholder.png" alt="Profile">
+        <span>Chat - {{ village }}</span>
+      </div>
+    </div>
+  
+    <!-- Chat Body -->
+    <div class="chat-body">
+      <div class="message-container" *ngFor="let msg of messages">
+        <div class="message-bubble" [ngClass]="{'sent': msg.user === currentUser, 'received': msg.user !== currentUser}">
+          <div class="message-text">{{ msg.message }}</div>
+          <!-- Optionally display a timestamp if provided -->
+          <div class="message-time">{{ msg.timestamp ? (msg.timestamp | date:'shortTime') : '' }}</div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Chat Input Area -->
+    <div class="chat-input">
+      <input [(ngModel)]="newMessage" placeholder="Type a message" />
+      <button (click)="sendMessage()">
+        <i class="material-icons">send</i>
+      </button>
+    </div>
+  </div>
+  
